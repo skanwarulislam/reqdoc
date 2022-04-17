@@ -1,0 +1,42 @@
+[
+  {
+    "allowRegistration": false,
+    "code": "AF",
+    "defaultCurrency": "AFN",
+    "documents": [
+      {
+        "code": "idPassport",
+        "description": "ID or Passport",
+        "id": 157,
+        "required": true
+      },
+      {
+        "code": "idSelfie",
+        "description": "ID Selfie",
+        "id": 158,
+        "required": true
+      },
+      {
+        "code": "proofOfAddress",
+        "description": "Proof of Address",
+        "id": 159,
+        "required": true
+      }
+    ],
+    "id": 3,
+    "options": {
+      "minimumOrderValue": 3000,
+      "limitValue": 42500,
+      "minimumTransferValue": 1700,
+      "minimumPartnerValue": 0,
+      "requireProofOfPayment": "TRUE",
+      "supportInstantTransfer": null,
+      "orderMinimumValue": "3000",
+      "unverifiedMaximum": "42500",
+      "withdrawalThreshold": "637500",
+      "transferMinimumValue": "1700",
+      "defaultMinimumAvailable": "3000"
+    },
+    "region": null
+  }
+]
