@@ -1,5 +1,5 @@
 APP_DIR=./app
-default: deploy
+default: deploy-service
 API_ENDPOINT=https://api.coindirect.com/api/country
 
 require:
@@ -26,19 +26,19 @@ test: test-service test-app
 start-service: install-service
 	 API_ENDPOINT=$(API_ENDPOINT) java -jar  target/reqdoc-1.0-SNAPSHOT-jar-with-dependencies.jar
 
-start-app: app-install
+start-app: install-app
 	cd $(APP_DIR) && npm run start
 
 start: start-service start-app
 
 deploy-service: .env docker-compose.yaml Dockerfile  require
-	docker-compose up --build reqdoc
+	docker-compose up --build reqdoc -d
 
 deploy-app: .env docker-compose.yaml  app/Dockerfile require deploy-service
-	docker-compose up --build app
+	docker-compose up --build app -d
 
 deploy: .env docker-compose.yaml Dockerfile app/Dockerfile require
-	docker-compose up --build
+	docker-compose up --build -d
 
 clean:
 	mvn clean && npm run clean
