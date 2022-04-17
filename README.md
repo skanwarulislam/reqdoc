@@ -33,12 +33,12 @@ This will build the source codes in a docker container and then start it :).
 The required document for countries will be accessible in the following url by default this show only 10 countries
 in ascending order by name.
 ```shell
-http://localhost:8080/v1/country/list
+curl http://localhost:8080/v1/country/list | jq .
 ```
 Now if you want to see more data you can sent to query parameters `offset` and `max` to list more countries. i.e
 
 ```shell
-http://localhost:8080/v1/country/list?offset=0&max=100
+curl http://localhost:8080/v1/country/list?offset=0&max=100 | jq .
 ```
 This will list all the countries with required documents, currency, maxwithdrawal limit for 100 countries.
 
@@ -79,7 +79,7 @@ The value of `sort` should be like `<field>:<asc|desc>`. Now it only allows to b
 We can get a descending ordered list of countries by name like below
 
 ```shell
-http://localhost:8080/v1/country/list?sort=name:desc&offset=0&max=100
+curl http://localhost:8080/v1/country/list?sort=name:desc&offset=0&max=100 | jq .
 ```
 #### Endpoint /v1/country/currency
 
@@ -89,7 +89,7 @@ There is no sorting/offset/max query parameter available for this endpoint.
 
 This can be access in the following url 
 ```shell
-http://localhost:8080/v1/country/currency
+curl http://localhost:8080/v1/country/currency | jq .
 ```
 Sample response looks like following:
 ```shell
@@ -134,6 +134,17 @@ http://localhost:7070/v1/country/currency
 ```
 
 ### Running with app
-Now there has been a small attempt to create a small app to view the output from the reqdoc service.  
+Now there has been a small attempt to create a small app to view the output from the reqdoc service. To run the app
+along with reqdoc service you can do the following 
 
+```shell
+make deploy
+```
+This should start both of the containers that you will be able to access reqdoc service as described above on port `8080`
+and the app would be available on the following url 
+```shell
+http://localhost:3000
+```
+
+Happy Coding! :)
 
